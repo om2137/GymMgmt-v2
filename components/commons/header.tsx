@@ -56,7 +56,7 @@ export const Header = function () {
 
     return (
         <div className="flex flex-col bg-transparent">
-            <div className={` flex flex-col w-1/2 mx-auto my-4 px-6 bg-cyan-950 dark:bg-white text-white dark:text-cyan-950 border-2  rounded-2xl items-center `}>
+            <div className={` flex flex-col w-1/2 mx-auto my-4 px-6 bg-cyan-900 dark:bg-white text-white dark:text-cyan-950 border-2  rounded-2xl items-center `}>
                 <div className="flex w-full capitalize justify-between">
                     <div className={`${searchVisibility} font-mono sm:text-lg`}>
                         <button onClick={onMenuClick} className="p-2 m-2 uppercase ">
@@ -85,13 +85,13 @@ export const Header = function () {
                         </button> 
                     </div>
                 </div>
-                <div className={`${searchDisplay} flex flex-col w-full justify-center items-center`}>
+                <div className={`${searchDisplay} flex flex-col w-full justify-center items-center pb-6`}>
                     <SearchBar searchDisplay={searchDisplay}/>
                 </div>
                 
                 <div className={`${visibility} flex-col py-6 w-full  capitalize text-center font-medium font-mono text-2xl`}>
                     {menu.map((item) => ( 
-                        <Link key={item.key} href={item.route} className="py-4 capitalize">
+                        <Link key={item.key}href={item.route} className="py-4 capitalize">
                             {
                                 item.name === "SignIn" ? "SignOut" : item.name
                             }

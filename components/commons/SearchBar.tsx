@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 interface Props{
-    searchDisplay: string;
+    searchDisplay?: string;
 }
 
 export function SearchBar( { searchDisplay }: Props ){
@@ -25,8 +25,6 @@ export function SearchBar( { searchDisplay }: Props ){
             setFilteredList([])
         }
     },[searchInput,menu,searchDisplay])
-
-    console.log(searchInput+" ", filteredList)
     
     return (
         <>
@@ -39,10 +37,10 @@ export function SearchBar( { searchDisplay }: Props ){
                         }}
                         type="text"
                         placeholder="search"
-                        className="w-full px-4 py-2 capitalize text-cyan-950 border border-r-0 border-cyan-950 focus:border-cyan-950 focus:outline-none rounded-l-xl"
+                        className="w-full px-4 py-2 capitalize text-white dark:text-cyan-950 bg-cyan-800 dark:bg-white border border-r-0 border-white dark:border-cyan-950 dark:focus:border-cyan-950 focus:outline-none rounded-l-xl"
                     />
                     <div 
-                        className=" px-4 py-2 capitalize text-cyan-950 border border-l-0 border-cyan-950 focus:border-cyan-950 focus:outline-none rounded-r-xl"
+                        className=" px-4 py-2 capitalize bg-cyan-800 dark:bg-white text-white dark:text-cyan-950 border border-l-0 border-white dark:border-cyan-950 dark:focus:border-cyan-950 focus:outline-none rounded-r-xl"
                     >
                         <button onClick={()=> {
                             setFilteredList([]);
@@ -54,7 +52,7 @@ export function SearchBar( { searchDisplay }: Props ){
                 </div>
 
                 </div>
-                <div className={`${searchDisplay} flex flex-col pb-6 w-full  capitalize text-center font-medium font-mono text-2xl`}>
+                <div className={`${searchDisplay} flex flex-col w-full  capitalize text-center font-medium font-mono text-2xl`}>
                     {
                         filteredList.length > 0 || filteredList === undefined ?
                             filteredList.map((item)=>(
