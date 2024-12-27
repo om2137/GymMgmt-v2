@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "Alice Johnson",
+        "age": 28,
+        "email": "alice.johnson@example.com",
+        "gender": "Female",
+        "address": "123 Maple Street, Springfield"
+    },
+    {
+        "id": 2,
+        "name": "Bob Smith",
+        "age": 35,
+        "email": "bob.smith@example.com",
+        "gender": "Male",
+        "address": "456 Oak Avenue, Rivertown"
+    },
+    {
+        "id": 3,
+        "name": "Charlie Brown",
+        "age": 42,
+        "email": "charlie.brown@example.com",
+        "gender": "Male",
+        "address": "789 Pine Road, Hilltop"
+    },
+    {
+        "id": 4,
+        "name": "Diana Prince",
+        "age": 30,
+        "email": "diana.prince@example.com",
+        "gender": "Female",
+        "address": "321 Elm Street, Metropolis"
+    },
+    {
+        "id": 5,
+        "name": "Ethan Hunt",
+        "age": 38,
+        "email": "ethan.hunt@example.com",
+        "gender": "Male",
+        "address": "654 Cedar Lane, Oceanside"
+    },
+    {
+        "id": 6,
+        "name": "Fiona Clarke",
+        "age": 25,
+        "email": "fiona.clarke@example.com",
+        "gender": "Female",
+        "address": "987 Willow Way, Sunnydale"
+    },
+    {
+        "id": 7,
+        "name": "George Miller",
+        "age": 50,
+        "email": "george.miller@example.com",
+        "gender": "Male",
+        "address": "159 Birch Boulevard, Greendale"
+    },
+    {
+        "id": 8,
+        "name": "Hannah Scott",
+        "age": 22,
+        "email": "hannah.scott@example.com",
+        "gender": "Female",
+        "address": "753 Poplar Street, Star City"
+    },
+    {
+        "id": 9,
+        "name": "Isaac Newton",
+        "age": 45,
+        "email": "isaac.newton@example.com",
+        "gender": "Male",
+        "address": "852 Ash Avenue, Lakeside"
+    },
+    {
+        "id": 10,
+        "name": "Julia Roberts",
+        "age": 33,
+        "email": "julia.roberts@example.com",
+        "gender": "Female",
+        "address": "951 Redwood Drive, Everglade"
+    }
+]
