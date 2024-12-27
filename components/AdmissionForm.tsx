@@ -17,8 +17,8 @@ export function AdmissionForm(){
     },[isMarried, selectedGender])
     return(
         <div className="w-full h-4/6 flex">
-            <div className="w-full flex justify-center items-center bg-cyan-100 dark:bg-cyan-900 rounded-xl m-2">        
-                <div className="w-1/2 h-4/5 border-r-2 border-white px-8">
+            <div className="w-full flex justify-center items-center border-2 border-cyan-900 bg-cyan-200 dark:bg-cyan-900 rounded-xl m-2">        
+                <div className="w-1/2 h-4/5 border-r-2 border-cyan-900 dark:border-white px-8">
                     <div className="flex justify-start text-2xl font-serif mb-2">
                         <span className="p-1">Card No. </span>
                         <div className="w-20">
@@ -35,7 +35,7 @@ export function AdmissionForm(){
                         <label htmlFor="dob">Date of Birth: </label>
                         <input 
                             type="date" onChange={(e)=>{setIsMarried(e.target.checked)}} 
-                            className="rounded bg-cyan-900 border border-white p-2 focus:outline-none" 
+                            className="rounded bg-cyan-100 border-cyan-900 dark:bg-cyan-900 border dark:border-white p-2 focus:outline-none" 
                             id="dob" name="dob"
                         />
                     </div> 
@@ -43,14 +43,14 @@ export function AdmissionForm(){
                         <div >Date of Admission: </div>
                         <input 
                             type="date" onChange={(e)=>{setIsMarried(e.target.checked)}} 
-                            className="rounded bg-cyan-900 border border-white p-2 focus:outline-none" 
+                            className="rounded bg-cyan-100 border-cyan-900 dark:bg-cyan-900 border dark:border-white p-2 focus:outline-none" 
                             id="dob" name="dob"
                         />
                     </div>           
                 </div>
                 <div className="w-1/2 h-4/5 px-8">
                     <div className="w-full  flex justify-end">
-                        <div className="h-24 w-20 border-2 border-white rounded flex justify-center items-center text-2xl font-serif">
+                        <div className="h-24 w-20 border-2 border-cyan-900 dark:border-white rounded flex justify-center items-center text-2xl font-serif">
                             img
                         </div>
                     </div>
@@ -63,7 +63,7 @@ export function AdmissionForm(){
                             <input 
                                 type="number"  
                                 // onChange={(e)=>setState?.(e.target.value)}
-                                className="text-start text-lg font-serif border-b-2 border-white dark:bg-cyan-900 dark:border-white bg-cyan-950 focus:border-b-2 focus:outline-none focus:placeholder:text-white dark:focus:placeholder:text-cyan-900 p-1" 
+                                className="text-start text-lg font-serif border-b-2 border-cyan-900 bg-cyan-100 dark:bg-cyan-900 dark:border-white focus:border-b-2 focus:outline-none focus:placeholder:text-white dark:focus:placeholder:text-cyan-900 p-1" 
                             />
                         </div>
                         
