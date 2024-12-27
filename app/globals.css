@@ -43,11 +43,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #ffffff; /* Light track color */
+  background: transparent; /* Light track color */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #083344; /* Light thumb color */
+  background: #164e63; /* Light thumb color */
   border-radius: 12px;
 }
 
@@ -93,7 +93,7 @@ body {
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #083344;
+  background: #164e63;
   border-radius: 12px;
 }
 
