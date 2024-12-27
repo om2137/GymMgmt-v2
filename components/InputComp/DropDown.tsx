@@ -12,7 +12,7 @@ export function Dropdown({list,setGender}: props){
                 onChange={(e)=> setGender(e.target.value)}
                 name="test" 
                 id="test" 
-                className="w-2/3 border border-white rounded bg-cyan-900 p-2 m-2 focus:outline-none"
+                className="w-2/3 border bg-cyan-100 border-cyan-900 dark:border-white rounded dark:bg-cyan-900 p-2 m-2 focus:outline-none"
                 defaultValue=""
             >
                 <option value="" disabled className="hidden">

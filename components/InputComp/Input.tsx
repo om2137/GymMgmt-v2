@@ -20,7 +20,7 @@ export function Input({ placeholder}:Props){
         <input 
             type="text"  
             // onChange={(e)=>setState?.(e.target.value)}
-            className="w-full text-start text-lg border-b-2 border-white dark:bg-cyan-900 dark:border-white bg-cyan-950 focus:border-b-2 focus:outline-none focus:placeholder:text-white dark:focus:placeholder:text-cyan-900 p-1" 
+            className="w-full text-start text-lg border-b-2 border-cyan-900 bg-cyan-100 dark:border-white dark:bg-cyan-900 focus:border-b-2 focus:outline-none focus:placeholder:text-white dark:focus:placeholder:text-cyan-900 p-1" 
             placeholder={placeholder}
         />
     )
