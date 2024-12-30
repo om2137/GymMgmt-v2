@@ -1,13 +1,20 @@
 import { List } from "@/components/List";
+import axios from "axios";
 
-export default function Invoice(){
-    const clients = [
-        // {key:1, name:"home", route:"/"},
-        {key:2, name:"dashboard", route:"/admin"},
-        {key:3, name:"admission", route:"/admin/admission"},
-        {key:4, name:"invoice", route:"/admin/invoice"},
-        {key:5, name:"SignIn", route:"/signin"}
-    ]
+async function getInvoices() {
+    try {
+      const response = await axios.get("http://localhost:3000/api/invoices")
+        return response.data;
+    }  catch(e) {
+      console.log(e);
+    }
+}
+
+export default async function Invoice(){
+    
+     const invoicesList =await getInvoices();
+     console.log(invoicesList);
+
     return(
         <div className="w-11/12 flex justify-center h-11/12 my-4 mx-auto">
             {/* <div className="h-full flex flex-col justify-center items-center">
@@ -15,7 +22,7 @@ export default function Invoice(){
                     Invoice
                 </div>
             </div> */}
-            <List listName={"Invoice List"} clients={clients} />
+            <List listName={"Invoice List"} invoices={invoicesList}/>
         </div>
     )
 }
