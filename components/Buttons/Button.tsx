@@ -36,9 +36,13 @@ export const SignInButton = function( {route, username, password,Name}: Props){
         </div>
     );
 } 
-
+export const FilterButton = function({onClick, Name}:Props){
+    return(
+        <button onClick={onClick} className="capitalize text-white">{Name}</button>
+    )
+}
 export const Button = function({onClick, Name}:Props){
     return(
-        <button onClick={onClick} className="capitalize">{Name}</button>
+        <button onClick={onClick} className="capitalize px-4 py-2 m-2 bg-red-500 text-white rounded-lg">{Name}</button>
     )
 }

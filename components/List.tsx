@@ -1,6 +1,8 @@
 "use client"
 import { useState } from "react";
-import { Button } from "./Buttons/Button";
+import { FilterButton } from "./Buttons/Button";
+import filters from "@/Jsons/filter.json"
+import { Modal } from "./commons/Modal";
 
 interface Props{
     listName: string;
@@ -9,6 +11,14 @@ interface Props{
         invoiceId: string;
         name: string;
         amount: string;
+    }[],
+    clients?: {
+        id: number;
+        name: string;
+        age: number;
+        email: string;
+        gender: string;
+        address: string;
     }[]
 }
 interface invoice{
@@ -16,8 +26,10 @@ interface invoice{
     name: string;
     amount: string;
 }
-export function List({listName,invoices}:Props){
+
+export function List({listName,invoices,clients}:Props){
     const [fltr,setFltr] = useState('hidden');
+    const [visibility, setVisibility]= useState('hidden');
     function filterVisibility(){
         if(fltr === 'hidden'){setFltr('flex')}else{setFltr('hidden')}
     }
@@ -28,25 +40,26 @@ export function List({listName,invoices}:Props){
                         <div className="w-full flex justify-between px-4 py-2">
                             <div>{listName}</div>
                             <div>
-                                <Button Name={"Filter"} onClick={filterVisibility}/>           
+                                <FilterButton Name={"Filter"} onClick={filterVisibility}/>           
                             </div>
                         </div>
-                        <div className={`absolute top-16 left-0 z=10 w-full ${fltr} bg-cyan-700 rounded-b-xl flex-col items-center px-4 py-2`}>
+                        <div className={`absolute top-16 left-0 z=10 w-full ${fltr} bg-cyan-800 rounded-b-xl flex-col items-center px-4 py-2`}>
                             {
-                                invoices?.map((invoice:invoice)=>(
+                                filters?.map((invoice:invoice)=>(
                                     <div key={invoice.key} className="py-2">{invoice.name}</div>
                                 ))
                             }
-                            
-                            
                         </div>
                     </div>
-                    <div className="w-full max-h-[32rem] min-h-40 overflow-auto mx-4 pt-2" id="list">
+                    <div className="w-full max-h-[32rem] min-h-40 overflow-auto overflow-x-hidden mx-4 pt-2" id="list">
                     
                     {
                         invoices?.map((invoice:invoice)=>(
-                            <div key={invoice.key} className="w-full h-20 flex items-center">
-                                <div className="w-full flex justify-between mx-4 my-auto p-4 bg-cyan-800 dark:bg-cyan-900 rounded-xl">
+                            <div key={invoice.key} className="w-full h-20 flex items-center hover:scale-105" >
+                                <div 
+                                    className="w-full flex justify-between  mx-8 my-auto p-4 bg-cyan-800 dark:bg-cyan-900 rounded-xl"
+                                    onClick={()=>{setVisibility('flex'); console.log("click") }}
+                                >
                                     <div>{invoice.key}. {invoice.name}</div>
                                     <div>{invoice.amount}</div>
                                 </div>
@@ -54,6 +67,9 @@ export function List({listName,invoices}:Props){
                             </div>
                         ))
                     }
+                    <div className={`${visibility} absolute top-32 left-60`}>
+                        <Modal visibility={visibility} setVisibility={setVisibility} client={clients?.[0]}/>
+                    </div>
                     </div>
                     
                 </div>

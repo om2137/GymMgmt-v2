@@ -78,5 +78,21 @@
         "email": "julia.roberts@example.com",
         "gender": "Female",
         "address": "951 Redwood Drive, Everglade"
+    },
+    {
+        "id": 11,
+        "name": "Isaac Newton",
+        "age": 45,
+        "email": "isaac.newton@example.com",
+        "gender": "Male",
+        "address": "852 Ash Avenue, Lakeside"
+    },
+    {
+        "id": 12,
+        "name": "Julia Roberts",
+        "age": 33,
+        "email": "julia.roberts@example.com",
+        "gender": "Female",
+        "address": "951 Redwood Drive, Everglade"
     }
 ]
