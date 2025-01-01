@@ -1,62 +1,93 @@
 [
     {
-        "key": 1,
-        "invoiceId": "INV-2024-001",
-        "name": "Alice Johnson",
-        "amount": "₹15,000"
+      "id": 1,
+      "name": "Alice Johnson",
+      "PaidOn": "2024-06-01",
+      "from": "2024-05-01",
+      "to": "2024-05-31",
+      "paymentType": "cash",
+      "totalfee": 1000
     },
     {
-        "key": 2,
-        "invoiceId": "INV-2024-002",
-        "name": "Bob Smith",
-        "amount": "₹22,500"
+      "id": 2,
+      "name": "Bob Smith",
+      "PaidOn": "2024-06-02",
+      "from": "2024-05-05",
+      "to": "2024-06-04",
+      "paymentType": "credit",
+      "totalfee": 1200
     },
     {
-        "key": 3,
-        "invoiceId": "INV-2024-003",
-        "name": "Charlie Brown",
-        "amount": "₹18,750"
+      "id": 3,
+      "name": "Charlie Brown",
+      "PaidOn": "2024-06-03",
+      "from": "2024-05-10",
+      "to": "2024-06-09",
+      "paymentType": "debit",
+      "totalfee": 900
     },
     {
-        "key": 4,
-        "invoiceId": "INV-2024-004",
-        "name": "Diana Prince",
-        "amount": "₹30,000"
+      "id": 4,
+      "name": "Diana Prince",
+      "PaidOn": "2024-06-04",
+      "from": "2024-05-15",
+      "to": "2024-06-14",
+      "paymentType": "cash",
+      "totalfee": 1500
     },
     {
-        "key": 5,
-        "invoiceId": "INV-2024-005",
-        "name": "Ethan Hunt",
-        "amount": "₹25,500"
+      "id": 5,
+      "name": "Ethan Hunt",
+      "PaidOn": "2024-06-05",
+      "from": "2024-05-20",
+      "to": "2024-06-19",
+      "paymentType": "credit",
+      "totalfee": 1100
     },
     {
-        "key": 6,
-        "invoiceId": "INV-2024-006",
-        "name": "Fiona Clarke",
-        "amount": "₹12,000"
+      "id": 6,
+      "name": "Fiona Clarke",
+      "PaidOn": "2024-06-06",
+      "from": "2024-05-25",
+      "to": "2024-06-24",
+      "paymentType": "debit",
+      "totalfee": 950
     },
     {
-        "key": 7,
-        "invoiceId": "INV-2024-007",
-        "name": "George Miller",
-        "amount": "₹35,000"
+      "id": 7,
+      "name": "George Miller",
+      "PaidOn": "2024-06-07",
+      "from": "2024-05-30",
+      "to": "2024-06-29",
+      "paymentType": "cash",
+      "totalfee": 1300
     },
     {
-        "key": 8,
-        "invoiceId": "INV-2024-008",
-        "name": "Hannah Scott",
-        "amount": "₹10,500"
+      "id": 8,
+      "name": "Hannah Lee",
+      "PaidOn": "2024-06-08",
+      "from": "2024-06-01",
+      "to": "2024-06-30",
+      "paymentType": "credit",
+      "totalfee": 1250
     },
     {
-        "key": 9,
-        "invoiceId": "INV-2024-009",
-        "name": "Isaac Newton",
-        "amount": "₹28,000"
+      "id": 9,
+      "name": "Isaac Newton",
+      "PaidOn": "2024-06-09",
+      "from": "2024-06-05",
+      "to": "2024-07-04",
+      "paymentType": "debit",
+      "totalfee": 1400
     },
     {
-        "key": 10,
-        "invoiceId": "INV-2024-010",
-        "name": "Julia Roberts",
-        "amount": "₹19,950"
+      "id": 10,
+      "name": "Julia Roberts",
+      "PaidOn": "2024-06-10",
+      "from": "2024-06-10",
+      "to": "2024-07-09",
+      "paymentType": "cash",
+      "totalfee": 1000
     }
-]
+  ]
+  
