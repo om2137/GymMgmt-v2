@@ -2,16 +2,17 @@
 interface props{
     list: {key:number; name:string}[];
     setGender: (value:string)=>void;
+    name:string;
 }
-export function Dropdown({list,setGender}: props){
+export function Dropdown({ name, list, setGender }: props){
 
     return(
         <div>
             <label htmlFor="test"> Gender: </label>
             <select 
                 onChange={(e)=> setGender(e.target.value)}
-                name="test" 
-                id="test" 
+                name={name} 
+                id={name} 
                 className="w-2/3 border bg-cyan-100 border-cyan-900 dark:border-white rounded dark:bg-cyan-900 p-2 m-2 focus:outline-none"
                 defaultValue=""
             >
