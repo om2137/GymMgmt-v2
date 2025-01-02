@@ -108,3 +108,29 @@ body {
     border-radius: 8px;
   }
 }
+.slide-in-out {
+  width: 200px;
+  height: 200px;
+  background-color: #3b82f6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slideTopToBottom 1s ease-in-out forwards;
+}
+
+@keyframes slideTopToBottom {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+.navbar-transition{
+ transition: height 500ms ease-in;
+}
+
