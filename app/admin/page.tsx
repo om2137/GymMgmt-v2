@@ -8,17 +8,17 @@ export default function Dashboard(){
                     Admin
                     
                 </div>
-                <div className="w-full h-36 capitalize flex">
-                    <div className="w-1/4 flex justify-center items-center bg-cyan-100 dark:bg-cyan-900 rounded-xl m-2">
+                <div className="w-[99%] h-48 sm:h-36 m-1 capitalize flex items-center sm:flex-row">
+                    <div className="w-1/4 h-full flex justify-center items-center bg-cyan-100 dark:bg-cyan-900 rounded-xl m-2">
                         total
                     </div>
-                    <div className="w-1/4 flex justify-center items-center bg-cyan-100 dark:bg-cyan-900 rounded-xl m-2">
+                    <div className="w-1/4 h-full flex justify-center items-center bg-cyan-100 dark:bg-cyan-900 rounded-xl m-2">
                         active
                     </div>
-                    <div className="w-1/4 flex justify-center items-center bg-cyan-100 dark:bg-cyan-900 rounded-xl m-2">
+                    <div className="w-1/4 h-full flex justify-center items-center bg-cyan-100 dark:bg-cyan-900 rounded-xl m-2">
                         due
                     </div>
-                    <div className="w-1/4 flex justify-center items-center bg-cyan-100 dark:bg-cyan-900 rounded-xl m-2">
+                    <div className="w-1/4 h-full flex justify-center items-center bg-cyan-100 dark:bg-cyan-900 rounded-xl m-2">
                         inactive
                     </div>
                 </div>

@@ -28,7 +28,7 @@ export const Header = function () {
     function onMenuClick() {
         console.log('click registered', visibility)
 
-        if (visibility === 'hidden' && currentRoute !== '/signin') {
+        if (visibility === 'hidden' || !onclick && currentRoute !== '/signin') {
             setVisibility('flex');
             setMenuVisibility('invisible');
 
@@ -59,12 +59,12 @@ export const Header = function () {
     return (
         <div className="flex flex-col bg-transparent">
             <div
-                className={` flex flex-col w-1/2 
-                motion-translate-x-in-[0%] motion-translate-y-in-[-100%] motion-duration-[0.00s] motion-duration-[0.75s]/translate
+                className={` flex flex-col w-10/12 md:w-3/5 lg:w-2/5  
+                motion-translate-x-in-[0%] motion-translate-y-in-[-100%] motion-duration-[0.00s] motion-duration-[1.00s]/translate
                 ${onclick ? 'h-[432px]' : 'h-[64px]'} navbar-transition
-                mx-auto my-4 px-6 bg-cyan-900 dark:bg-white text-white dark:text-cyan-950 border-2  rounded-2xl items-center `
+                mx-auto my-6 bg-cyan-900 dark:bg-white text-white dark:text-cyan-950  rounded-2xl items-center `
                 }>
-                <div className="flex w-full capitalize justify-between">
+                <div className="flex w-full capitalize justify-between px-6 mt-1">
                     <div className={`${searchVisibility} font-mono sm:text-lg`}>
                         <button onClick={() => { onMenuClick(); if (onclick) { setOnclick(false) } else { setOnclick(true) } }} className="p-2 m-2 uppercase ">
                             menu
@@ -77,7 +77,14 @@ export const Header = function () {
                     </div>
                     <div className={`flex ${menuVisibility} font-mono sm:text-lg`}>
 
-                        <button onClick={() => { onSearchClick(); if (onclick) { setOnclick(false) } else { setOnclick(true) } }} className={`p-2 my-2 mx-4 uppercase`}>
+                        <button onClick={() => { 
+                            onSearchClick(); if (onclick) { setOnclick(false) } else { setOnclick(true) } 
+                        }} 
+                            className={`p-2 my-2 mx-4 uppercase
+                                transition-all duration-700
+                                ${onclick ? 'opacity-0 max-h-[500px]' : 'opacity-100 max-h-0'} 
+                                ease-in-out
+                            `}>
                             {
                                 searchVisibility === 'invisible' ?
                                     "X" : "S"
@@ -92,10 +99,10 @@ export const Header = function () {
                 <div
                     className={`
                         ${visibility} 
-                        flex-col py-6 w-full capitalize text-center font-medium font-mono text-2xl 
-                        transition-all duration-700
-                        ${onclick ? 'opacity-100 max-h-[500px]' : 'opacity-0 max-h-0'} 
-                        overflow-hidden ease-in-out
+                        flex-col p-6 w-full capitalize text-center font-medium font-mono text-2xl 
+                        transition-all duration-700 bg-cyan-100  border-t border-cyan-950 
+                        ${onclick ? 'opacity-100 max-h-[432px]' : 'opacity-0 max-h-0'} 
+                        overflow-hidden ease-in-out rounded-b-xl 
                     `}
                     >
                     {menu.map((item) => (
