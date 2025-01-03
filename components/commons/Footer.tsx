@@ -8,14 +8,14 @@ export const Footer = function () {
     ];
     return(
         <div className="text-cyan-950 dark:text-white">
-            <div className="flex m-8 capitalize justify-between item-center">
-                <div className="flex font-bold font-sans text-xl opacity-40">
+            <div className="flex flex-col sm:flex-row m-8 capitalize justify-between item-center">
+                <div className="flex font-bold justify-center sm:justify-start font-sans text-lg sm:text-xl opacity-40">
                     <span className="my-auto">
                         2024@ EasyDev, Inc.
                     </span>
                     
                 </div>
-                <div  className="flex font-sans font-semibold text-base align-baseline">
+                <div  className="flex flex-wrap font-sans font-semibold text-sm sm:text-base align-baseline">
                     {socials.map((item) => ( 
                         <div  key={item.key}  className="px-4">
                             <button className="py-4 capitalize">

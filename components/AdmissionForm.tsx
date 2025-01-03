@@ -61,10 +61,10 @@ export function AdmissionForm(){
     }
     return(
         <div className="w-full h-4/6 flex">
-            <div className="w-full flex justify-center items-center border-2 border-cyan-900 bg-cyan-200 dark:bg-cyan-900 rounded-xl m-2">        
+            <div className="w-full flex justify-center font-sans items-center border-2 border-cyan-900 bg-cyan-200 dark:bg-cyan-900 rounded-xl m-2">        
                 <div className="w-1/2 h-5/6 border-r-2 border-cyan-900 dark:border-white px-8">
-                    <div className="flex justify-start text-2xl font-serif mb-2">
-                        <span className="p-1">Card No. </span>
+                    <div className="flex justify-start  text-2xl mb-2">
+                        <span className="p-1  font-serif">Card No. </span>
                         <div className="w-20" >
                             <Input name="cardNo" changeHandler={handleChange} />
                         </div>
@@ -110,7 +110,7 @@ export function AdmissionForm(){
                                 type="text"  
                                 name="contact"
                                 onChange={handleChange}
-                                className="text-start text-lg font-serif border-b-2 border-cyan-900 bg-cyan-100 dark:bg-cyan-900 dark:border-white focus:border-b-2 focus:outline-none focus:placeholder:text-white dark:focus:placeholder:text-cyan-900 p-1" 
+                                className="text-start text-lg border-b-2 border-cyan-900 bg-cyan-100 dark:bg-cyan-900 dark:border-white focus:border-b-2 focus:outline-none focus:placeholder:text-white dark:focus:placeholder:text-cyan-900 p-1" 
                             />
                         </div>
                         
