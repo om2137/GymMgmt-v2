@@ -12,3 +12,35 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URI")
 }
+model members{
+  // id Int @id@default(autoincrement())
+  id             Int   @id @default(autoincrement()) 
+  Firstname      String
+  Middlename     String
+  Lastname       String
+  Address        String?
+  Contact        Int   @unique
+  DoB            DateTime
+  Gender         String
+  Mstat          Boolean @default(false)
+  Avatar         String?
+  admissionDate  DateTime?
+  cardNumber     String?
+  Balance        String?
+
+  invoice invoice[]
+}
+model invoice{
+  id Int @id @default(autoincrement())
+  member_id Int
+  paidDate       DateTime?
+  dueDate        DateTime?
+  paidOn         DateTime?
+  facility       String?
+  fees           Float?
+  admFee         Float?
+  PaymentType    String?
+  // Foreign key relationship
+  member          members     @relation(fields: [member_id], references: [id])
+}
+
