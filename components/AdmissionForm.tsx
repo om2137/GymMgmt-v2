@@ -46,14 +46,9 @@ export function AdmissionForm(){
         
         console.log(selectedGender);
     },[ selectedGender])
-    // useEffect(()=>{
-    //     setUser({
-    //         ...user,
-    //         isMarried: isMarried
-    //     })
-    // },[isMarried])
 
-    function handleChange(e: React.ChangeEvent<any>){
+
+    function handleChange(e: React.ChangeEvent<HTMLInputElement >){
         setUser({
             ...user,
             [e.target.name]: e.target.value,
