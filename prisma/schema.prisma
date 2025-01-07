@@ -26,7 +26,7 @@ model members{
   Avatar         String?
   admissionDate  DateTime?
   cardNumber     String?
-  Balance        String?
+  Balance        String? @default("0.00")
 
   invoice invoice[]
 }

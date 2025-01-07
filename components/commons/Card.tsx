@@ -13,7 +13,8 @@ interface Props {
 }
 interface client {
     id: number;
-    name: string;
+    Firstname: string;
+    Lastname: string;
     age: number;
     email: string;
     gender: string;
@@ -23,7 +24,7 @@ export default function Card({ client, setVisibility, setSelectedClient,setActiv
     const handleToggle = () => {
         setActiveCardId(isActive ? null : id); 
     };
-    
+    const UserImage = `https://res.cloudinary.com/dqpsoptzm/image/upload/v1669841414/gym-mgmt-assets/sokmqtvc9d7sokqxuo8g.jpg`
     return (
         <div 
             className={`
@@ -35,8 +36,9 @@ export default function Card({ client, setVisibility, setSelectedClient,setActiv
             <div className="relative" onClick={handleToggle}>
                 <div className="w-3/4 h-[166px] bg-cyan-600 rounded-xl">
                     <Image
-                        src={DefaultImg}
+                        src={UserImage || DefaultImg}
                         fill={true}
+                        style={{objectFit:"cover"}}
                         alt={"no image"}
                         className="rounded-lg"
                     />
@@ -52,7 +54,7 @@ export default function Card({ client, setVisibility, setSelectedClient,setActiv
                     absolute bottom-0 pl-4 pb-2 capitalize   group-hover:opacity-0`
                 }>
                     <p className="text-sm text-gray-700">{client.address}</p>
-                    <h2 className="text-2xl font-bold">{client.name}</h2>
+                    <h2 className="text-2xl font-bold text-black  ">{client.Firstname} {client.Lastname}</h2>
                 </div>
             </div>
 
@@ -62,7 +64,7 @@ export default function Card({ client, setVisibility, setSelectedClient,setActiv
                  `}
             >
                 <div className="flex justify-between">
-                    <span className="font-semibold">{client.name}</span>
+                    <span className="font-semibold">{client.Firstname} {client.Lastname}</span>
                     <span>age:{client.age}</span>
                 </div>
                 <div className="flex justify-between items-center">
