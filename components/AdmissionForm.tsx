@@ -48,7 +48,7 @@ export function AdmissionForm(){
     },[ selectedGender])
 
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement >){
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>){
         setUser({
             ...user,
             [e.target.name]: e.target.value,

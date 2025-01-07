@@ -8,7 +8,7 @@ interface props{
     setVisibility:  Dispatch<SetStateAction<string>>;
     client?: {
         id: number;
-        name: string;
+        Firstname: string;
         age: number;
         email: string;
         gender: string;
@@ -33,7 +33,7 @@ export function Modal({visibility, setVisibility, client }:props){
             <div className={`w-full h-full relative flex justify-center items-center bg-cyan-800
              rounded-xl shadow shadow-cyan-400`}>
                 <div className="flex flex-col p-2 m-2">
-                    <span className="text-4xl font-semibold capitalize">hello, {client?.name}</span> 
+                    <span className="text-4xl font-semibold capitalize">hello, {client?.Firstname}</span> 
                     <span className="text-2xl"></span>
                 </div>
                 

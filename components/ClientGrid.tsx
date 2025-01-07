@@ -7,7 +7,8 @@ import { Modal } from "./commons/Modal";
 
 interface client{
     id: number;
-    name: string;
+    Firstname: string;
+    Lastname: string;
     age: number;
     email: string;
     gender: string;
