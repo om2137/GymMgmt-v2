@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^6.1.0",
     "axios": "^1.7.9",
     "next": "15.1.2",
+    "next-cloudinary": "^6.16.0",
     "pg": "^8.13.1",
     "prisma": "^6.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "recharts": "^2.15.0",
     "tailwindcss-motion": "^1.0.0"
   },
   "devDependencies": {
