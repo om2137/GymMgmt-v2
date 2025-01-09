@@ -1,5 +1,10 @@
-import invoices from '@/Jsons/invoices.json'
+
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient();
 
 export async function GET(){
-    return Response.json(invoices)
+    const invoices = await prisma.invoice.findMany();
+    return Response.json(invoices);
 }
+
