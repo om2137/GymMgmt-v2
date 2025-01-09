@@ -15,7 +15,7 @@ export const Footer = function () {
                     </span>
                     
                 </div>
-                <div  className="flex flex-wrap font-sans font-semibold text-sm sm:text-base align-baseline">
+                <div  className="flex flex-wrap justify-center font-sans font-semibold text-sm sm:text-base align-baseline">
                     {socials.map((item) => ( 
                         <div  key={item.key}  className="px-4">
                             <button className="py-4 capitalize">

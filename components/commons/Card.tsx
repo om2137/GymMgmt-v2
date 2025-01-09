@@ -24,7 +24,7 @@ export default function Card({ client, setVisibility, setSelectedClient,setActiv
     const handleToggle = () => {
         setActiveCardId(isActive ? null : id); 
     };
-    const UserImage = `https://res.cloudinary.com/dqpsoptzm/image/upload/v1669841414/gym-mgmt-assets/sokmqtvc9d7sokqxuo8g.jpg`
+    // const UserImage = `https://res.cloudinary.com/dqpsoptzm/image/upload/v1669841414/gym-mgmt-assets/sokmqtvc9d7sokqxuo8g.jpg`
     return (
         <div 
             className={`
@@ -36,7 +36,7 @@ export default function Card({ client, setVisibility, setSelectedClient,setActiv
             <div className="relative" onClick={handleToggle}>
                 <div className="w-3/4 h-[166px] bg-cyan-600 rounded-xl">
                     <Image
-                        src={UserImage || DefaultImg}
+                        src={ DefaultImg }
                         fill={true}
                         style={{objectFit:"cover"}}
                         alt={"no image"}
