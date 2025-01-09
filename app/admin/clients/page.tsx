@@ -14,10 +14,10 @@ async function getUserDetails() {
 export default async function Clients(){
     
     const users = await getUserDetails();
-    
     return(
-        <div>
-            <ClientGrid clients={users}/>
+        <div className="w-4/5 h-11/12 my-4 mx-auto">
+            <div className="m-2 p-2 sm:p-4 sm:m-4 "><ClientGrid clients={users}/></div>
+            
         </div>
     )
 }
