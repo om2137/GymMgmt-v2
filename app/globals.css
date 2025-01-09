@@ -133,4 +133,40 @@ body {
 .navbar-transition{
  transition: height 500ms ease-in;
 }
+@keyframes border-cursor {
+  0% {
+      border-top: 2px solid #fcd34d;
+      border-right: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      border-left: 2px solid transparent;
+  }
+  25% {
+      border-top: 2px solid #fcd34d;
+      border-right: 2px solid #fcd34d;
+      border-bottom: 2px solid transparent;
+      border-left: 2px solid transparent;
+  }
+  50% {
+      border-top: 2px solid transparent;
+      border-right: 2px solid #fcd34d;
+      border-bottom: 2px solid #fcd34d;
+      border-left: 2px solid transparent;
+  }
+  75% {
+      border-top: 2px solid transparent;
+      border-right: 2px solid transparent;
+      border-bottom: 2px solid #fcd34d;
+      border-left: 2px solid #fcd34d;
+  }
+  100% {
+      border-top: 2px solid #22c55e;
+      border-right: 2px solid #22c55e;
+      border-bottom: 2px solid #22c55e;
+      border-left: 2px solid #22c55e;
+  }
+}
+
+.animate-border-cursor {
+  animation: border-cursor 4s linear forwards;
+}
 
