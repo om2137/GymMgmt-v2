@@ -47,7 +47,7 @@ export async function POST(req: NextRequest){
         })
         return Response.json(res, { status: 201 });
     }catch (e) {
-        console.error('❌ Error creating hardcoded member:',e);
+        console.error(' Error creating hardcoded member:',e);
         return Response.json(
             { error: 'Internal Server Error' }, 
             { status: 500 }
