@@ -9,10 +9,14 @@ interface client {
     id: number;
     Firstname: string;
     Lastname: string;
-    age: number;
-    email: string;
-    gender: string;
     address: string;
+    contact: string;
+    dob: Date;
+    gender: string;
+    IsMarried: boolean;
+    admissionDate: string;
+    cardNumber: string;
+    balance: string;
 }
 
 interface props {
@@ -24,8 +28,8 @@ export function ClientGrid({ clients }: props) {
     const [visibility, setVisibility] = useState('hidden');
     const [selectedClient, setSelectedClient] = useState(0);
     const [activeCardId, setActiveCardId] = useState<number | null>(null);
-    const [isOverflowing, setIsOverflowing] = useState(false)
-
+    const [isOverflowing, setIsOverflowing] = useState(false);
+    console.log(clients)
     useEffect(()=>{
         if(clients.length > 4){
             setIsOverflowing(true);
@@ -52,7 +56,7 @@ export function ClientGrid({ clients }: props) {
             <div
                 className={`
                     ${visibility === `flex` ? 'pointer-events-none' : ''} 
-                    w-full max-h-[36rem] overflow-auto 
+                    w-full min-h-[16.5rem] max-h-[36rem] overflow-auto 
                     grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 
                     p-4 pb-8` 
                 }>
@@ -67,11 +71,11 @@ export function ClientGrid({ clients }: props) {
                             `}
                         >
                             <Card
-                                id={client.id}
+                                id={index}
                                 setVisibility={setVisibility}
                                 client={client}
                                 setSelectedClient={setSelectedClient}
-                                isActive={activeCardId === client.id}
+                                isActive={activeCardId === index}
                                 setActiveCardId={setActiveCardId}
                             />
                         </div>
@@ -79,7 +83,7 @@ export function ClientGrid({ clients }: props) {
                 }
             </div>
             <div className={`${visibility} absolute top-40`}>
-                <Modal visibility={visibility} setVisibility={setVisibility} client={clients[selectedClient - 1]} />
+                <Modal visibility={visibility} setVisibility={setVisibility} client={clients?.[selectedClient]} />
             </div>
         </div>
     )
