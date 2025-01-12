@@ -9,10 +9,15 @@ interface props {
     client?: {
         id: number;
         Firstname: string;
-        age: number;
-        email: string;
-        gender: string;
+        Lastname: string;
         address: string;
+        contact: string;
+        dob: Date;
+        gender: string;
+        IsMarried: boolean;
+        admissionDate: string;
+        cardNumber: string;
+        balance: string;
     };
     invoice?: {
         id: number;
@@ -22,21 +27,21 @@ interface props {
         dueDate: string;
         facility: string;
         fees: number;
-        admissionFee: number;
+        admFee: number;
         paymentType: string;
     };
     setSelectedInvoice?: Dispatch<SetStateAction<number>>;
 }
 
 export function Modal({ visibility, setVisibility, client }: props) {
-
+    // console.log(client)
     return (
         <div className={`${visibility} w-[32rem] h-[26rem]`} >
             <div className={`w-full h-full relative flex justify-center items-center bg-cyan-800
              rounded-xl shadow shadow-cyan-400`}>
                 <div className="flex flex-col p-2 m-2">
                     <span className="text-4xl font-semibold capitalize">hello, {client?.Firstname}</span>
-                    <span className="text-2xl"></span>
+                    <span className="text-2xl">{client?.IsMarried}</span>
                 </div>
 
                 <div className="absolute right-2 top-2">
