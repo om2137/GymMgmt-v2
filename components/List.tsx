@@ -1,8 +1,9 @@
 "use client"
-import { useState } from "react";
-import { FilterButton } from "./Buttons/Button";
+import { useEffect, useState } from "react";
+import { Button, FilterButton } from "./Buttons/Button";
 import filters from "@/Jsons/filter.json"
 import { InvoiceModal } from "./commons/Modal";
+import axios from "axios";
 
 interface Props {
     listName: string;
@@ -14,7 +15,7 @@ interface Props {
         dueDate: string;
         facility: string;
         fees: number;
-        admissionFee: number;
+        admFee: number;
         paymentType: string;
     }[];
 
@@ -28,14 +29,14 @@ interface Props {
     }[]
 }
 interface invoice {
-    id: number;
+    id?: number;
     member_id: number;
     paidDate: string;
     paidOn: string;
     dueDate: string;
     facility: string;
     fees: number;
-    admissionFee: number;
+    admFee: number;
     paymentType: string;
 }
 interface filters {
@@ -48,7 +49,27 @@ export function List({ listName, invoices }: Props) {
     const [fltr, setFltr] = useState('hidden');
     const [visibility, setVisibility] = useState('hidden');
     const [selectedInvoice, setSelectedInvoice] = useState<number>(0);
+    const [newInvoice, setNewInvoice] = useState<invoice>();
 
+    useEffect(()=>{
+        setNewInvoice({
+            member_id: 25,
+            paidDate: "2025-01-10T00:00:00.000Z",
+            paidOn: "2025-01-09T00:00:00.000Z",
+            dueDate: "2025-01-15T00:00:00.000Z",
+            facility: "full access",
+            fees: 100.0,
+            admFee: 10.0,
+            paymentType: "UPI"
+        })
+    },[])
+    
+    async function insertInvoice() {
+        const response = await axios.post(`http://localhost:3000/api/invoices`, newInvoice);
+        alert(response);
+        console.log(response);
+    }
+    
     console.log(invoices)
 
     function filterVisibility() {
@@ -72,14 +93,17 @@ export function List({ listName, invoices }: Props) {
                         }
                     </div>
                 </div>
+                <div>
+                    <Button Name={"Insert"} onClick={insertInvoice} />
+                </div>
                 <div className={` ${visibility === 'flex' ? 'pointer-events-none' : ''} w-full max-h-[32rem] min-h-40 overflow-auto overflow-x-hidden mx-4 pt-2" id="list`}>
 
                     {
-                        invoices?.map((invoice: invoice) => (
-                            <div key={invoice.id} className="w-full h-20 flex items-center hover:scale-105" >
-                                <button 
+                        invoices?.map((invoice: invoice, index: number) => (
+                            <div key={index} className="w-full h-20 flex items-center hover:scale-105" >
+                                <button
                                     className="w-full flex justify-between  mx-8 my-auto p-4 bg-cyan-800 dark:bg-cyan-900 rounded-xl"
-                                    onClick={()=>{setVisibility('flex'); console.log(); setSelectedInvoice(invoice.id) }}
+                                    onClick={() => { setVisibility('flex'); console.log(); setSelectedInvoice(index) }}
                                 >
                                     <div>{invoice.id}. {invoice.facility}</div>
                                     <div>{invoice.fees}</div>
