@@ -15,14 +15,13 @@ interface client {
     id: number;
     Firstname: string;
     Lastname: string;
-    age: number;
-    email: string;
     gender: string;
     address: string;
 }
 export default function Card({ client, setVisibility, setSelectedClient,setActiveCardId, isActive, id }: Props,) {
     const handleToggle = () => {
         setActiveCardId(isActive ? null : id); 
+        console.log(id)
     };
     // const UserImage = `https://res.cloudinary.com/dqpsoptzm/image/upload/v1669841414/gym-mgmt-assets/sokmqtvc9d7sokqxuo8g.jpg`
     return (
@@ -65,7 +64,7 @@ export default function Card({ client, setVisibility, setSelectedClient,setActiv
             >
                 <div className="flex justify-between">
                     <span className="font-semibold">{client.Firstname} {client.Lastname}</span>
-                    <span>age:{client.age}</span>
+                    <span>age:test</span>
                 </div>
                 <div className="flex justify-between items-center">
                     <div className="text-sm w-20 text-wrap">
