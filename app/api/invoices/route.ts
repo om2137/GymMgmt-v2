@@ -38,10 +38,14 @@ export async function POST(req: NextRequest){
     });
 
     return Response.json(res, { status: 200 });
-    }catch(e:any){
-        console.error(' Error creating member:',e.message);
+    }catch(e: unknown) {
+        if (e instanceof Error) {
+            console.error('Error creating member:', e.message);
+        } else {
+            console.error('Unexpected error:', e);
+        }
         return Response.json(
-            { error: 'Internal Server Error' }, 
+            { error: 'Internal Server Error' },
             { status: 500 }
         );
     }
