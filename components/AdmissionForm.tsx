@@ -37,8 +37,8 @@ export function AdmissionForm() {
         }
     );
     const gender = [
-        { key: 1, name: "Male" },
-        { key: 2, name: "Female" },
+        { key: 1, name: "Male", value: 'male' },
+        { key: 2, name: "Female", value: 'female' },
 
     ]
     function handleGender(value:string){
@@ -133,7 +133,7 @@ export function AdmissionForm() {
                     </div>
                     <div className="pb-2 ">
 
-                        <div className="text-lg py-2 px-4 "> <Dropdown name="gender" list={gender} setGender={handleGender} /> </div>
+                        <div className="text-lg py-2 px-4 "> <Dropdown name="gender" list={gender} setValue={handleGender} placeholder={"Select Gender"} /> </div>
                         <div className="flex justify-between text-lg p-4">
                             <div>
                                 <label htmlFor="isMarried">Is Married: </label>
