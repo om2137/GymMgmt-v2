@@ -1,6 +1,6 @@
 'use client'
-import axios from "axios";
-import { useEffect, useState } from "react";
+// import axios from "axios";
+import { useState } from "react";
 import { Button } from "./Buttons/Button";
 import { SearchBar } from "./commons/SearchBar";
 import { Dropdown } from "./InputComp/DropDown";
@@ -21,6 +21,7 @@ interface client {
     admissionDate: string;
     cardNumber: string;
     balance: string;
+    avatar?: string;
 }
 interface invoice {
     id?: number;
@@ -34,35 +35,59 @@ interface invoice {
     paymentType: string;
 }
 
-const facility = [{ key: 1, name: "cardio" }, { key: 2, name: "weights" }];
-const duration = [{ key: 1, name: "monthly" }, { key: 2, name: "quarterly" }, { key: 3, name: "annual" }]
-const paymentType = [{ key: 1, name: "Online" }, { key: 2, name: "Cash" }];
-const admissionFee = [{ key: 1, name: "100" }, { key: 2, name: "200" }];
+const facilityList = [{ key: 1, name: "cardio", value: 600 }, { key: 2, name: "weights", value: 1000 }];
+const durationList = [{ key: 1, name: "monthly", value: 1 }, { key: 2, name: "quarterly", value: 3 }, { key: 3, name: "annual", value: 12 }]
+const paymentTypeList = [{ key: 1, name: "Online", value: 'online' }, { key: 2, name: "Cash", value: 'cash' }];
+const admissionFeeList = [{ key: 1, name: '100', value: 100 }, { key: 2, name: '200', value: 200 }];
 
 export function MakeInvoice(Props: props) {
-    const [newInvoice, setNewInvoice] = useState<invoice>();
-    const [value, setValue] = useState('');
+    const [newInvoice, setNewInvoice] = useState<invoice>({
+        member_id: 0,
+        paidDate: '',
+        paidOn: '',
+        dueDate: '',
+        facility: '',
+        fees: 0,
+        admFee: 0,
+        paymentType: ''
+    });
+    const [facility, setFacility] = useState('');
+    const [paymentType, setPaymentType] = useState('');
+    const [duration, setDuration] = useState('');
+    const [admissionFee, setAdmissionFee] = useState('0');
+    const clientList = Props.client?.map((member)=>({
+        id:member.id, 
+        name: `${member.Firstname} ${member.Lastname}`, 
+        avatar: 'https://res.cloudinary.com/dqpsoptzm/image/upload/v1736962825/V2/default_m9uvjp.png'
+    }));
+    // async function insertInvoice() {
+    //     const response = await axios.post(`http://localhost:3000/api/invoices`, newInvoice);
+    //     alert(response);
+    //     console.log(response);
+    // }
 
-    async function insertInvoice() {
-        const response = await axios.post(`http://localhost:3000/api/invoices`, newInvoice);
-        alert(response);
-        console.log(response);
-    }
-    console.log(value);
-    console.log(Props.client);
+    function handleChange() {
 
-    useEffect(() => {
         setNewInvoice({
+            ...newInvoice,
             member_id: 25,
-            paidDate: "2025-01-10T00:00:00.000Z",
-            paidOn: "2025-01-09T00:00:00.000Z",
-            dueDate: "2025-01-15T00:00:00.000Z",
-            facility: "full access",
-            fees: 100.0,
-            admFee: 10.0,
-            paymentType: "UPI"
+            facility: facility,
+            fees: Number(admissionFee) + (Number(duration) * Number(facility)),
+            admFee: Number(admissionFee),
+            paymentType: paymentType
         })
-    }, [])
+        console.log(newInvoice)
+    }
+    function handlePaidDate(e: { target: { value: string | number | Date; }; }) {
+        const dueDate = new Date(e.target.value);
+        dueDate.setMonth(new Date(e.target.value).getMonth() + Number(duration));
+        setNewInvoice({
+            ...newInvoice,
+            paidOn: new Date(e.target.value).toISOString(),
+            dueDate: dueDate.toISOString()
+        }
+        );
+    }
 
     return (
         <div className="w-full h-full flex flex-col items-center ">
@@ -72,23 +97,23 @@ export function MakeInvoice(Props: props) {
                 <div className="flex justify-center capitalize text-xl font-semibold m-4">
                     <div className="p-2">member: </div>
                     <div>
-                        <SearchBar />
+                        <SearchBar list={clientList} />
                     </div>
 
                 </div>
                 <div className="grid grid-cols-2">
                     <div className="mx-6">
-                        <Dropdown list={facility} setValue={setValue} name={"facility"} placeholder={"select facility"} />
+                        <Dropdown list={facilityList} setValue={setFacility} name={"facility"} placeholder={"select facility"} />
                     </div>
                     <div className="mx-6">
-                        <Dropdown list={paymentType} setValue={setValue} name={"payment Type"} placeholder={"select PaymentType"} />
+                        <Dropdown list={paymentTypeList} setValue={setPaymentType} name={"payment Type"} placeholder={"select PaymentType"} />
                     </div>
                     <div className="mx-6">
-                        <Dropdown list={duration} setValue={setValue} name={"duration"} placeholder={"select Duration"} />
+                        <Dropdown list={durationList} setValue={setDuration} name={"duration"} placeholder={"select Duration"} />
                     </div>
 
                     <div className="mx-6">
-                        <Dropdown list={admissionFee} setValue={setValue} name={"admission Fee"} placeholder={"select admission fee"} />
+                        <Dropdown list={admissionFeeList} setValue={setAdmissionFee} name={"admission Fee"} placeholder={"select admission fee"} />
                     </div>
                 </div>
                 <div className="grid grid-cols-2 m-4">
@@ -96,7 +121,7 @@ export function MakeInvoice(Props: props) {
                         <label htmlFor="dob" className="p-2">Paid On:</label>
                         <input
                             type="date"
-                            // onChange={}
+                            onChange={handlePaidDate}
                             className="rounded bg-cyan-100 border-cyan-900 dark:bg-cyan-900 border dark:border-white p-2 focus:outline-none mx-2"
                             name="dob"
                         />
@@ -105,14 +130,19 @@ export function MakeInvoice(Props: props) {
                         <label htmlFor="start" className="p-2">plan start from:</label>
                         <input
                             type="date"
-                            // onChange={}
+                            onChange={(e) => {
+                                setNewInvoice({
+                                    ...newInvoice,
+                                    paidDate: new Date(e.target.value).toISOString(),
+                                })
+                            }}
                             className="rounded bg-cyan-100 border-cyan-900 dark:bg-cyan-900 border dark:border-white p-2 focus:outline-none mx-2"
-                            name="dob"
+                            name="StartDate"
                         />
                     </div>
                 </div>
                 <div className="flex justify-end pr-10 ">
-                    <Button Name={"Insert"} properties="" onClick={() => { console.log("new invoice"); insertInvoice() }} />
+                    <Button Name={"Insert"} properties="" onClick={handleChange} />
                 </div>
             </div>
         </div>
