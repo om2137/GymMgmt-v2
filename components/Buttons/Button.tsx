@@ -8,6 +8,7 @@ interface Props{
     password?: string;
     onClick?: () => void;
     Name: string;
+    properties?: string;
 }
 
 export const SignInButton = function( {route, username, password,Name}: Props){
@@ -41,8 +42,8 @@ export const FilterButton = function({onClick, Name}:Props){
         <button onClick={onClick} className="capitalize text-white">{Name}</button>
     )
 }
-export const Button = function({onClick, Name}:Props){
+export const Button = function({onClick, Name, properties}:Props){
     return(
-        <button onClick={onClick} className="capitalize px-4 py-2 m-2 bg-red-500 text-white rounded-lg">{Name}</button>
+        <button onClick={onClick} className={`${properties} capitalize px-4 py-2 m-2 bg-red-500 text-white rounded-lg`}>{Name}</button>
     )
 }
