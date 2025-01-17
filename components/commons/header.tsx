@@ -17,11 +17,11 @@ export const Header = function () {
 
     const menu = useMemo(() => [
         // {key:1, name:"home", route:"/"},
-        { key: 2, name: "dashboard", route: "/admin" },
-        { key: 3, name: "admission", route: "/admin/admission" },
-        { key: 4, name: "clients", route: "/admin/clients" },
-        { key: 5, name: "invoice", route: "/admin/invoice" },
-        { key: 6, name: "SignIn", route: "/signin" }
+        { id: 2, name: "dashboard", route: "/admin" },
+        { id: 3, name: "admission", route: "/admin/admission" },
+        { id: 4, name: "clients", route: "/admin/clients" },
+        { id: 5, name: "invoice", route: "/admin/invoice" },
+        { id: 6, name: "SignIn", route: "/signin" }
     ], []);
 
     // const navTransition = 'transition ease-in-out delay-100 hover:scale-105';
@@ -55,6 +55,7 @@ export const Header = function () {
         }
     }, [currentRoute])
 
+    
 
     return (
         <div className="flex flex-col bg-transparent">
@@ -93,7 +94,7 @@ export const Header = function () {
                     </div>
                 </div>
                 <div className={`${searchDisplay} flex flex-col w-full justify-center items-center pb-6`}>
-                    <SearchBar searchDisplay={searchDisplay} />
+                    <SearchBar searchDisplay={searchDisplay} list={menu}/>
                 </div>
 
                 <div
@@ -106,7 +107,7 @@ export const Header = function () {
                     `}
                     >
                     {menu.map((item) => (
-                        <Link key={item.key} href={item.route} className="py-4 capitalize block">
+                        <Link key={item.id} href={item.route} className="py-4 capitalize block">
                             {item.name === "SignIn" ? "SignOut" : item.name}
                         </Link>
                     ))}
