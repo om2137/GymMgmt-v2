@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 interface Props {
     searchDisplay?: string;
     list?: list[];
+    setId?: (value:number)=>void;
 }
 interface list {
     id: number;
@@ -11,11 +12,10 @@ interface list {
     avatar?: string;
     route?: string;
 }
-export function SearchBar({ searchDisplay, list }: Props) {
+export function SearchBar({ searchDisplay, list, setId }: Props) {
     const [searchInput, setSearchInput] = useState('');
     const [filteredList, setFilteredList] = useState<{ id: number; name?: string; avatar?: string; }[]>([]);
-
-    console.log(list)
+    
     useEffect(() => {
         console.log("rerender");
         if (searchInput.trim() !== '') {
@@ -52,15 +52,21 @@ export function SearchBar({ searchDisplay, list }: Props) {
                         </button>
                     </div>
                 </div>
-
+                        
             </div>
             <div className={`${searchDisplay} flex flex-col w-full  capitalize text-center font-medium font-mono text-2xl`}>
                 {
                     filteredList.length > 0 || filteredList === undefined ?
                         filteredList.map((item) => (
-                            <button key={item.id} className="py-4 capitalize">
+                            <button key={item.id} onClick={()=>{
+                                setId?.(item.id);
+                                setFilteredList([]);
+                                setSearchInput('');
+                            }} 
+                            className="flex py-4 capitalize"
+                            >
                                 {item.avatar? 
-                                    <div className=" w-6 h-6 mx-4"><Image src={item.avatar} width={6} height={6} alt="no image" /></div> 
+                                    <div className="relative rounded-2xl w-16 h-10 mx-4"><Image src={item.avatar} fill alt="no image" className="rounded-xl"/></div> 
                                     : null
                                 } <div>{item.name}</div>
                                 
