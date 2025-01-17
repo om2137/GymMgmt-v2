@@ -1,27 +1,33 @@
 'use client'
 interface props{
-    list: {key:number; name:string}[];
-    setGender: (value:string)=>void;
+    list: {key:number; name:string; value: string|number}[];
+    setValue?: (value:string)=>void;
     name:string;
+    placeholder: string;
+    width?: string;
+    onChange?:() => void;
 }
-export function Dropdown({ name, list, setGender }: props){
+export function Dropdown({ name, list, setValue, placeholder, width, onChange }: props){
 
     return(
-        <div>
-            <label htmlFor="test"> Gender: </label>
+        <div className="w-full capitalize">
+            <label htmlFor="test" className=""> Select: </label>
             <select 
-                onChange={(e)=> setGender(e.target.value)}
+                onChange={(e)=> {
+                    setValue?.(e.target.value); 
+                    if(onChange){onChange()}; 
+                }}
                 name={name} 
                 id={name} 
-                className="w-2/3 border bg-cyan-100 border-cyan-900 dark:border-white rounded dark:bg-cyan-900 p-2 m-2 focus:outline-none"
+                className={`${width} border capitalize bg-cyan-100 border-cyan-900 dark:border-white rounded dark:bg-cyan-900 p-2 m-2 focus:outline-none`}
                 defaultValue=""
             >
                 <option value="" disabled className="hidden">
-                    Select Gender
+                    { placeholder }
                 </option>
                 {
                     list.map((item)=>(
-                       <option key={item.key} value={item.name}>{item.name}</option> 
+                       <option key={item.key} value={item.value}>{item.name}</option> 
                     ))
                 }
             </select>
