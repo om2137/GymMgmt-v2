@@ -16,7 +16,11 @@ interface invoice{
 }
 
 export async function GET(){
-    const invoices = await prisma.invoice.findMany();
+    const invoices = await prisma.invoice.findMany({
+        include: {
+            member: true,
+        },
+    });
     return Response.json(invoices);
 }
 
