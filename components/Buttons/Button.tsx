@@ -45,6 +45,6 @@ export const FilterButton = function({onClick, Name}:Props){
 }
 export const Button = function({onClick, Name, properties, btnColor}:Props){    
     return(
-        <button onClick={onClick} className={`${properties} ${btnColor? `bg-${btnColor}-500` : 'bg-red-500'} capitalize px-4 py-2 m-2  text-white rounded-lg`}>{Name}</button>
+        <button onClick={onClick} className={`${properties} ${btnColor? btnColor : 'bg-red-500'} capitalize px-4 py-2 m-2  text-white rounded-lg`}>{Name}</button>
     )
 }
