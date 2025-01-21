@@ -57,12 +57,12 @@ export function MakeInvoice(Props: props) {
     const [admissionFee, setAdmissionFee] = useState('0');
     const [clientId, setClientId] = useState(0);
 
-    const clientList = Props.client?.map((member)=>({
-        id:member.id, 
-        name: `${member.Firstname} ${member.Lastname}`, 
+    const clientList = Props.client?.map((member) => ({
+        id: member.id,
+        name: `${member.Firstname} ${member.Lastname}`,
         avatar: 'https://res.cloudinary.com/dqpsoptzm/image/upload/v1736962825/V2/default_m9uvjp.png'
     }));
-    useEffect(()=>{
+    useEffect(() => {
         setNewInvoice({
             ...newInvoice,
             member_id: clientId,
@@ -71,12 +71,13 @@ export function MakeInvoice(Props: props) {
             admFee: Number(admissionFee),
             paymentType: paymentType
         })
-    },[clientId, admissionFee, duration, facility, paymentType])
+    }, [clientId, admissionFee, duration, facility, paymentType])
 
     async function insertInvoice() {
         const response = await axios.post(`http://localhost:3000/api/invoices`, newInvoice);
         alert(response);
         console.log(response);
+
         // console.log(newInvoice)
     }
     function handlePaidDate(e: { target: { value: string | number | Date; }; }) {
@@ -92,15 +93,24 @@ export function MakeInvoice(Props: props) {
 
     return (
         <div className="w-full h-full flex flex-col items-center ">
-
-
             <div className="w-4/5 bg-cyan-800 rounded-xl p-4 m-4">
-                <div className="flex justify-center capitalize text-xl font-semibold m-4">
-                    <div className="p-2">member: </div>
-                    <div>
-                        <SearchBar list={clientList} setId={setClientId}/>
+                {clientId === 0 ?
+                    <div className="flex justify-center capitalize text-xl font-semibold m-4">
+                        <div className="p-2">member: </div>
+                        <div>
+                            <SearchBar list={clientList} setId={setClientId} />
+                        </div>
                     </div>
-                </div>
+                    :
+                    <div className="flex justify-center items-center">
+                        <div className="px-6 text-xl font-semibold">
+                            Selected member: {clientId}
+                        </div>
+                        <button >
+                            <Button onClick={() => setClientId(0)} Name="X"/>
+                        </button>
+                    </div>
+                }
                 <div className="w-full flex flex-wrap justify-center p-4">
                     <div className="mx-6 my-2">
                         <Dropdown width='w-24 md:w-40 lg:w-48' list={facilityList} setValue={setFacility} name={"facility"} placeholder={"select facility"} />
@@ -139,7 +149,7 @@ export function MakeInvoice(Props: props) {
                     </div>
                 </div>
                 <div className="flex justify-end pr-10 ">
-                    <Button Name={"Insert"} properties="" onClick={()=>{insertInvoice();}} />
+                    <Button Name={"Insert"} properties="" onClick={() => { insertInvoice(); }} />
                 </div>
             </div>
         </div>
