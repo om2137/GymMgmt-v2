@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
 import { formatDateToDDMMYYYY } from '@/utils/DateFormatter';
 import { Button } from '../Buttons/Button';
@@ -41,19 +40,20 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'right',
         fontWeight: 'bold',
-        paddingHorizontal:20
+        paddingHorizontal: 20
     },
-    paid:{
+    paid: {
         textAlign: 'center',
         marginVertical: 20,
         fontSize: 14,
         fontStyle: 'semibold'
     },
-    subtotal:{
+    subtotal: {
         paddingHorizontal: 20,
-        paddingVertical:30
+        paddingVertical: 30
     }
 });
+
 interface Invoice {
     id?: number;
     paidDate: string;
@@ -133,24 +133,40 @@ export const InvoiceTemplate = (invoice: Invoice) => (
                     <Text>Sign</Text>
                 </View>
             </View>
-            
         </Page>
     </Document>
 );
 
+export const DownloadInvoice: React.FC<DownloadInvoiceProps> = ({ invoice }) => {
+    const [isClient, setIsClient] = useState(false);
 
-export const DownloadInvoice: React.FC<DownloadInvoiceProps> = ({ invoice }) => (
-    <div>
-        <PDFDownloadLink
-            document={<InvoiceTemplate {...invoice} />}
-            fileName={`invoice_${invoice.id}.pdf`}
-        >
-            <Button Name={'Download Invoice'} btnColor='bg-green-500' />
-        </PDFDownloadLink>
-    </div>
-);
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) return <p>Loading...</p>;
+
+    return (
+        <div>
+            <PDFDownloadLink
+                document={<InvoiceTemplate {...invoice} />}
+                fileName={`invoice_${invoice.id}.pdf`}
+            >
+                 <Button Name={'Download Invoice'} btnColor='bg-green-500' />
+            </PDFDownloadLink>
+        </div>
+    );
+};
 
 export const PdfViewer: React.FC<PdfViewerProps> = ({ invoice }) => {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) return <p>Loading PDF viewer...</p>;
+
     return (
         <PDFViewer width="100%" height="600px">
             <InvoiceTemplate {...invoice} />
