@@ -1,5 +1,4 @@
 'use client'
-
 import { Dispatch, SetStateAction } from "react";
 import { Button } from "../Buttons/Button";
 import { formatDateToDDMMYYYY } from "@/utils/DateFormatter";
@@ -82,7 +81,6 @@ export function InvoiceModal({ visibility, setVisibility, invoice, setSelectedIn
                     <span className="">Subscription validity: <br />{formatDateToDDMMYYYY(invoice?.paidDate)} - {formatDateToDDMMYYYY(invoice?.dueDate)}</span>
                     <span>
                         {invoice && <DownloadInvoice invoice={invoice} />}
-                        {/* <Button Name="download" btnColor="green"/> */}
                     </span>
                     
                 </div>
