@@ -121,10 +121,10 @@ body {
 
 @keyframes slideTopToBottom {
   0% {
-    transform: translateY(-100%);
+    transform: translateY(-120%);
   }
   50% {
-    transform: translateY(50%);
+    transform: translateY(40%);
   }
   100% {
     transform: translateY(0%);
@@ -133,40 +133,32 @@ body {
 .navbar-transition{
  transition: height 500ms ease-in;
 }
-@keyframes border-cursor {
-  0% {
-      border-top: 2px solid #fcd34d;
-      border-right: 2px solid transparent;
-      border-bottom: 2px solid transparent;
-      border-left: 2px solid transparent;
-  }
-  25% {
-      border-top: 2px solid #fcd34d;
-      border-right: 2px solid #fcd34d;
-      border-bottom: 2px solid transparent;
-      border-left: 2px solid transparent;
-  }
-  50% {
-      border-top: 2px solid transparent;
-      border-right: 2px solid #fcd34d;
-      border-bottom: 2px solid #fcd34d;
-      border-left: 2px solid transparent;
-  }
-  75% {
-      border-top: 2px solid transparent;
-      border-right: 2px solid transparent;
-      border-bottom: 2px solid #fcd34d;
-      border-left: 2px solid #fcd34d;
-  }
-  100% {
-      border-top: 2px solid #22c55e;
-      border-right: 2px solid #22c55e;
-      border-bottom: 2px solid #22c55e;
-      border-left: 2px solid #22c55e;
-  }
+@keyframes pulse-mesh {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.5); opacity: 0.8; }
 }
 
-.animate-border-cursor {
-  animation: border-cursor 4s linear forwards;
+.mesh-gradient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background: #00272b; /* Base background color */
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
 }
 
+.mesh-blur {
+  position: absolute;
+  width: 50vw;
+  height: 50vh;
+  filter: blur(100px);
+  border-radius: 20%;
+  opacity: 0.8;
+  animation: pulse-mesh 6s infinite ease-in-out alternate;
+}
+
+.mesh-blue    { background: #33bbde; top: 0; left: 0; animation-delay: 0s; }
+.mesh-white   { background: white; top: 0; right: 0; animation-delay: 1.5s; }
+.mesh-pink    { background: #cd294a; bottom: 0; left: 0; animation-delay: 3s; }
+.mesh-purple  { background: #7a28b8; bottom: 0; right: 0; animation-delay: 4.5s; }
