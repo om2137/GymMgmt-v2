@@ -159,6 +159,6 @@ body {
 }
 
 .mesh-blue    { background: #33bbde; top: 0; left: 0; animation-delay: 0s; }
-.mesh-white   { background: white; top: 0; right: 0; animation-delay: 1.5s; }
-.mesh-pink    { background: #cd294a; bottom: 0; left: 0; animation-delay: 3s; }
-.mesh-purple  { background: #7a28b8; bottom: 0; right: 0; animation-delay: 4.5s; }
+.mesh-white   { background: white; bottom: 0; right: 0; animation-delay: 1.5s; }
+.mesh-pink    { background: #cd2976;  top: 0; right: 0; animation-delay: 3s; }
+.mesh-purple  { background: #a228b8; bottom: 0; left: 0; animation-delay: 4.5s; }
