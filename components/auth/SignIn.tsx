@@ -24,7 +24,7 @@ export function SignIn() {
                         <SignInInput placeholder="Password" setState={setPassword} Id="password"/>    
                     </div>
                     <div className="flex justify-center w-2/3 my-4">
-                        <SignInButton route="/admin" username={username} password={password} Name={"Sign In"} />
+                        <SignInButton username={username} password={password} Name={"Sign In"} />
                     </div>
                     
                 </div>
