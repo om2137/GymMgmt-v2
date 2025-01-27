@@ -1,14 +1,16 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react";
-import { SearchBar } from "./SearchBar";
+// import { SearchBar } from "./SearchBar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { signOut } from "next-auth/react";
+import { Button } from "../Buttons/Button";
 
 export const Header = function () {
     const [visibility, setVisibility] = useState('hidden');
     const [onclick, setOnclick] = useState(false);
-    const [searchDisplay, setSearchDisplay] = useState<string>('hidden');
+    // const [searchDisplay, setSearchDisplay] = useState<string>('hidden');
     const [menuVisibility, setMenuVisibility] = useState('');
     const [searchVisibility, setSearchVisibility] = useState('');
 
@@ -36,18 +38,18 @@ export const Header = function () {
             setMenuVisibility('');
         }
     }
-    function onSearchClick() {
-        if (searchDisplay === 'flex') {
-            setSearchDisplay('hidden');
-            setSearchVisibility('');
+    // function onSearchClick() {
+    //     if (searchDisplay === 'flex') {
+    //         setSearchDisplay('hidden');
+    //         setSearchVisibility('');
 
-        } else {
-            setTimeout(() => {
-                setSearchDisplay('flex');
-            }, 700);
-            setSearchVisibility('invisible');
-        }
-    }
+    //     } else {
+    //         setTimeout(() => {
+    //             setSearchDisplay('flex');
+    //         }, 700);
+    //         setSearchVisibility('invisible');
+    //     }
+    // }
     useEffect(() => {
         if (currentRoute === "/signin") {
             setSearchVisibility("invisible");
@@ -61,8 +63,9 @@ export const Header = function () {
         <div className="flex flex-col bg-transparent">
             <div
                 className={` flex flex-col w-10/12 md:w-3/5 lg:w-2/5  
-                motion-translate-x-in-[0%] motion-translate-y-in-[-100%] motion-duration-[0.00s] motion-duration-[1.00s]/translate
-                ${onclick ? 'h-[432px]' : 'h-[64px]'} navbar-transition
+                motion-translate-x-in-[0%] motion-translate-y-in-[-100%] 
+                motion-duration-[0.00s] motion-duration-[1.00s]/translate navbar-transition
+                ${onclick ? 'h-[432px]' : 'h-[64px]'}
                 mx-auto my-6 bg-cyan-900 dark:bg-white text-white dark:text-cyan-950  rounded-2xl items-center `
                 }>
                 <div className="flex w-full capitalize justify-between px-6 mt-1">
@@ -79,7 +82,8 @@ export const Header = function () {
                     <div className={`flex ${menuVisibility} font-mono sm:text-lg`}>
 
                         <button onClick={() => { 
-                            onSearchClick(); if (onclick) { setOnclick(false) } else { setOnclick(true) } 
+                            // onSearchClick(); if (onclick) { setOnclick(false) } else { setOnclick(true) } 
+                            signOut(); 
                         }} 
                             className={`p-2 my-2 mx-4 uppercase
                                 transition-all duration-700
@@ -93,9 +97,9 @@ export const Header = function () {
                         </button>
                     </div>
                 </div>
-                <div className={`${searchDisplay} flex flex-col w-full justify-center items-center pb-6`}>
+                {/* <div className={`${searchDisplay} flex flex-col w-full justify-center items-center pb-6`}>
                     <SearchBar searchDisplay={searchDisplay} list={menu}/>
-                </div>
+                </div> */}
 
                 <div
                     className={`
@@ -107,9 +111,17 @@ export const Header = function () {
                     `}
                     >
                     {menu.map((item) => (
-                        <Link key={item.id} href={item.route} className="py-4 capitalize block">
-                            {item.name === "SignIn" ? "SignOut" : item.name}
-                        </Link>
+                        <div key={item.id} >
+                            { item.id === 6 ? 
+                                <Button Name={"SignOut"} btnColor="bg-transparent" / > :
+                                <Link href={item.route}  className="py-4 capitalize block">
+                                    {
+                                    
+                                    item.name}
+                                </Link>
+                            }
+                        </div>
+                        
                     ))}
                 </div>
 
