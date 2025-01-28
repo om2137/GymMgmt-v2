@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const handler = NextAuth({
+const authOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -27,11 +27,13 @@ const handler = NextAuth({
   ],
   callbacks: {
     async redirect() {
-      return "/admin"; // Redirect to a custom page after login
+      return "/admin"; 
     },
   },
   
   // pages:{signIn: '/auth/signin',}
-});
+};
 
-export { handler as GET, handler as POST };
+const handler = NextAuth(authOptions);
+
+export {handler as POST, handler as GET}
