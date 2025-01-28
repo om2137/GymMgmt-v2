@@ -113,11 +113,9 @@ export const Header = function () {
                     {menu.map((item) => (
                         <div key={item.id} >
                             { item.id === 6 ? 
-                                <Button Name={"SignOut"} btnColor="bg-transparent" / > :
+                                <Button onClick={()=>{signOut()}} Name={"SignOut"} btnColor="bg-transparent" / > :
                                 <Link href={item.route}  className="py-4 capitalize block">
-                                    {
-                                    
-                                    item.name}
+                                    {item.name}
                                 </Link>
                             }
                         </div>
