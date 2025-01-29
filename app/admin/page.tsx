@@ -1,6 +1,7 @@
 // import InitChart from "@/components/Charts/InitChart";
-
+'use client'
 import { LineChartComp, PieChartComp } from "@/components/Charts/InitChart";
+import { useSession } from "next-auth/react";
 
 export default function Dashboard() {
     const clients = [
@@ -17,13 +18,13 @@ export default function Dashboard() {
         { value: 80000, date: "04" },
         { value: 90000, date: "05" }
     ]
+    const user = useSession();
     return (
         <div className="w-11/12 lg:w-4/5 h-full mx-auto my-4">
             <div className="h-full m-2 p-2 sm:p-4 sm:m-4 flex flex-col capitalize text-2xl justify-start items-start">
                 <div className="px-4 pb-4 text-4xl capitalize font-semibold">
                     <span className="font-light">Good afternoon, </span>
-                    Admin
-
+                    {user.data?.user?.name}
                 </div>
                 {/* <div>
                     <InitChart />
