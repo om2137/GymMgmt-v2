@@ -14,9 +14,9 @@ datasource db {
 }
 
 model admin {
-  id Int @id @default(autoincrement())
-  AdminName String
-  password String
+  id            Int @id @default(autoincrement())
+  AdminName     String
+  password      String
 }
 
 model members {
@@ -48,6 +48,5 @@ model invoice {
   fees        Float?
   admFee      Float?
   PaymentType String?
-
   member members @relation(fields: [member_id], references: [id])
 }
