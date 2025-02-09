@@ -17,8 +17,6 @@ export const SignInButton = function( { username, password,Name}: Props){
     function checkUser(){
         if(!username?.trim() && !password?.trim()){
             alert(`missing fields`);
-        }else if(username !== 'user' && password !== 'pass'){
-
         }
         else{
             alert(`${username} ${password}`);
