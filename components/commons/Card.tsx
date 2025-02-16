@@ -18,70 +18,76 @@ interface client {
     gender: string;
     address: string;
 }
-export default function Card({ client, setVisibility, setSelectedClient,setActiveCardId, isActive, id }: Props,) {
+
+export default function Card({ client, setVisibility, setSelectedClient, setActiveCardId, isActive, id }: Props) {
     const handleToggle = () => {
-        setActiveCardId(isActive ? null : id); 
-        console.log(id)
+        setActiveCardId(isActive ? null : id);
+        console.log(id);
     };
-    // const UserImage = `https://res.cloudinary.com/dqpsoptzm/image/upload/v1669841414/gym-mgmt-assets/sokmqtvc9d7sokqxuo8g.jpg`
+
     return (
-        <div 
+        <div
             className={`
-                ${isActive ? 'scale-110 z-50' : ''}
-                hover:scale-110 group relative flex flex-col text-left text-black bg-cyan-600 
-                rounded-xl shadow-lg shadow-cyan-200`
-            }
+                ${isActive ? "scale-100 z-50" : ""}
+                hover:scale-100 scale-90 transition-transform ease-in-out transform origin-center 
+                group flex flex-col text-left text-black bg-cyan-600 
+                rounded-xl shadow-lg shadow-cyan-200 relative
+            `}
         >
-            <div className="relative" onClick={handleToggle}>
-                <div className="w-3/4 h-[166px] bg-cyan-600 rounded-xl">
+            <div onClick={handleToggle} className="relative">
+                <div className="aspect-[3/4] w-full bg-cyan-600 rounded-xl">
                     <Image
-                        src={ DefaultImg }
+                        src={DefaultImg}
                         fill={true}
-                        style={{objectFit:"cover"}}
+                        style={{ objectFit: "cover" }}
                         alt={"no image"}
                         className="rounded-lg"
                     />
-                    <button className={`
-                        ${isActive ? "opacity-100" : "opacity-0"}
-                        bg-red-500 text-white text-sm rounded-lg p-2 absolute top-2 right-2 `
-                    }>
+                    <button
+                        className={`
+                            ${isActive ? "opacity-100" : "opacity-0"}
+                            bg-red-500 text-white text-sm rounded-lg p-2 absolute top-2 right-2 transition-opacity
+                        `}
+                    >
                         X
                     </button>
                 </div>
-                <div className={`
-                    ${isActive ? 'opacity-0' : 'opacity-100'}
-                    absolute bottom-0 pl-4 pb-2 capitalize   group-hover:opacity-0`
-                }>
-                    <p className="text-sm text-gray-700">{client.address}</p>
-                    <h2 className="text-2xl font-bold text-black  ">{client.Firstname} {client.Lastname}</h2>
+
+                <div
+                    className={`
+                        absolute bottom-0 left-0 w-full rounded-b-lg group-hover:bg-gradient-to-b from-transparent to-cyan-700
+                        p-2
+                    `}
+                >
+                    <p className="text-sm text-black">{client.address}</p>
+                    <h2 className="text-2xl font-bold text-black group-hover:hidden">
+                        {client.Firstname} {client.Lastname}
+                    </h2>
+                    <div className={`
+                            hidden group-hover:flex transition-transform delay-1000 ease-in-out justify-between text-center text-xl
+                        
+                        `}
+                    >
+                        <div className="flex flex-col justify-between">
+                            <span className="text-base font-semibold">{client.Firstname} {client.Lastname}</span>
+                            <span>age:test</span>
+                        </div>
+                        <div className="flex flex-col justify-between items-center">
+                            <div className="text-sm w-20 text-wrap">
+                                80808888
+                            </div>
+                            <button
+                                onClick={() => { setVisibility('flex'); setSelectedClient(id); if (isActive) { handleToggle() } }}
+                                className="px-4 py-2 mx-1 my-2 bg-white rounded-xl text-sm text-cyan-950 shadow-sm shadow-cyan-300"
+                            >
+                                Details
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div className={`absolute w-full capitalize text-white flex flex-col items-left top-32 
-                    p-2 rounded-b-xl bg-cyan-800  opacity-0 group-hover:opacity-100 shadow-lg shadow-cyan-200
-                    ${isActive ? "opacity-100" : "opacity-0"}
-                 `}
-            >
-                <div className="flex justify-between">
-                    <span className="font-semibold">{client.Firstname} {client.Lastname}</span>
-                    <span>age:test</span>
-                </div>
-                <div className="flex justify-between items-center">
-                    <div className="text-sm w-20 text-wrap">
-                        80808888
-                    </div>
-                    <button
-                        onClick={() => { setVisibility('flex'); setSelectedClient(id); if(isActive){handleToggle()}  }}
-                        className="px-4 py-2 mx-1 my-2 bg-white rounded-xl text-sm text-cyan-950 shadow-sm shadow-cyan-300" 
-                    >
-                        Details
-                    </button>
-                </div>
-                <div className="flex justify-end items-end">
-                    
-                </div>
-                
-            </div>
+
         </div>
     );
 }
