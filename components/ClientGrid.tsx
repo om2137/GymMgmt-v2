@@ -57,7 +57,7 @@ export function ClientGrid({ clients }: props) {
                 className={`
                     ${visibility === `flex` ? 'pointer-events-none' : ''} 
                     w-full min-h-[16.5rem] max-h-[36rem] overflow-auto 
-                    grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 
+                    grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 
                     p-4 pb-8` 
                 }>
                 {
@@ -83,7 +83,7 @@ export function ClientGrid({ clients }: props) {
                 }
             </div>
             <div className={`${visibility} absolute top-40`}>
-                <Modal visibility={visibility} setVisibility={setVisibility} client={clients?.[selectedClient]} />
+                <Modal visibility={visibility} setVisibility={setVisibility} client={clients?.[selectedClient] ?? null} />
             </div>
         </div>
     )
