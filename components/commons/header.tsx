@@ -74,11 +74,11 @@ export const Header = function () {
                             menu
                         </button>
                     </div>
-                    <div className={`flex  font-serif font-bold sm:text-3xl`}>
+                    <Link href={'/'} className={`flex  font-serif font-bold sm:text-3xl`}>
                         <button className="my-auto">
                             Co. Name
                         </button>
-                    </div>
+                    </Link>
                     <div className={`flex ${menuVisibility} font-mono sm:text-lg`}>
 
                         <button onClick={() => { 
@@ -114,7 +114,7 @@ export const Header = function () {
                         <div key={item.id} >
                             { item.id === 6 ? 
                                 <Button onClick={()=>{signOut()}} Name={"SignOut"} btnColor="bg-transparent" / > :
-                                <Link href={item.route}  className="py-4 capitalize block">
+                                <Link href={item.route} onClick={() => { onMenuClick(); if (onclick) { setOnclick(false) } else { setOnclick(true) } }} className="py-4 capitalize block">
                                     {item.name}
                                 </Link>
                             }
