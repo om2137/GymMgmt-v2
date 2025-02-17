@@ -48,6 +48,13 @@ interface props {
 }
 
 export function Modal({ visibility, setVisibility, client }: props) {
+    if (!client) {
+        return (
+          <div className={`modal ${visibility} bg-white p-4 rounded-lg shadow-lg`}>
+            <p>No client selected</p>
+          </div>
+        );
+      }
     // console.log(client)
     return (
         <div className={`${visibility} w-[32rem] h-[26rem]`} >

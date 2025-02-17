@@ -110,7 +110,7 @@ export function MakeInvoice(Props: props) {
                                     btnColor="bg-white"
                                     onClick={() => setNewInvoiceBtn(false)}
                                 /> :
-                                <Button Name={"Close"} properties="sm:text-sm" onClick={() => setNewInvoiceBtn(true)} />
+                                <Button Name={"Close"} btnColor="bg-white" properties="sm:text-sm" onClick={() => setNewInvoiceBtn(true)} />
                             }
                         </div>
                     </div>
@@ -177,7 +177,7 @@ export function MakeInvoice(Props: props) {
                             </div>
                         </div>
                         <div className="flex justify-end pr-10 ">
-                            <Button Name={"Insert"} properties="" onClick={() => { insertInvoice(); }} />
+                            <Button Name={"Insert"} btnColor="bg-white" onClick={() => { insertInvoice(); }} />
                         </div>
                     </motion.div>
                 </div>
