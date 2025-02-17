@@ -1,9 +1,8 @@
-export function Loader(){
-    return(
-        <div>
-            <div className="border-b-8 w-40 h-40 rounded-full animate-spin border-white bg-transparent m-2">
-                
-            </div>
-        </div>
-    )
-}
+export default function Loader() {
+    return (
+      <div className="flex justify-center items-center h-full w-full">
+        <div className="w-20 h-20 border-8 border-t-transparent border-cyan-500 rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+  
