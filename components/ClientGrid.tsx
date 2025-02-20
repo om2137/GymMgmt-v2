@@ -72,6 +72,7 @@ export function ClientGrid({ clients }: props) {
                         >
                             <Card
                                 id={index}
+                                modalVisibility = {visibility}
                                 setVisibility={setVisibility}
                                 client={client}
                                 setSelectedClient={setSelectedClient}
