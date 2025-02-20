@@ -5,6 +5,7 @@ import { Dispatch, SetStateAction } from "react";
 
 interface Props {
     client: client;
+    modalVisibility:string;
     setVisibility: Dispatch<SetStateAction<string>>;
     setSelectedClient: Dispatch<SetStateAction<number>>;
     setActiveCardId: Dispatch<SetStateAction<number | null>>;
@@ -19,12 +20,15 @@ interface client {
     address: string;
 }
 
-export default function Card({ client, setVisibility, setSelectedClient, setActiveCardId, isActive, id }: Props) {
+export default function Card({ client, modalVisibility, setVisibility, setSelectedClient, setActiveCardId, isActive, id }: Props) {
     const handleToggle = () => {
-        setActiveCardId(isActive ? null : id);
+        if(modalVisibility === 'hidden'){
+            setActiveCardId(null);
+        }
+        
         console.log(id);
     };
-
+    
     return (
         <div
             className={`
@@ -77,7 +81,7 @@ export default function Card({ client, setVisibility, setSelectedClient, setActi
                                 80808888
                             </div>
                             <button
-                                onClick={() => { setVisibility('flex'); setSelectedClient(id); if (isActive) { handleToggle() } }}
+                                onClick={() => { setVisibility('flex'); setSelectedClient(id);}}
                                 className="px-4 py-2 mx-1 my-2 bg-white rounded-xl text-sm text-cyan-950 shadow-sm shadow-cyan-300"
                             >
                                 Details
