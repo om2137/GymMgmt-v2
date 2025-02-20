@@ -11,7 +11,7 @@ export const Footer = function () {
             <div className="flex flex-col sm:flex-row m-8 capitalize justify-between item-center">
                 <div className="flex font-bold justify-center sm:justify-start font-sans text-lg sm:text-xl opacity-40">
                     <span className="my-auto">
-                        2024@ EasyDev, Inc.
+                        © 2024 EasyDev, Inc.
                     </span>
                     
                 </div>
