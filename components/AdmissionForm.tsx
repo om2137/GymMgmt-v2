@@ -50,8 +50,8 @@ export function AdmissionForm() {
         console.log(value);
     }
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        const { name, value, type} = e.target;
+    function handleChange(e: React.ChangeEvent<string | HTMLInputElement | undefined>) {
+        const { name, value, type} = e.target as HTMLInputElement;
         setUser({
             ...user,
             [name]: type === 'number' ? Number(value) : type === 'date' ? `${value}T00:00:00.000Z` :value,
