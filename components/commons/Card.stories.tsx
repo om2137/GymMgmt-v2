@@ -35,7 +35,8 @@ const CardWrapper = (args: {
     console.log(activeCardId,visibility,selectedClient)
   return (
     <div className="block justify-center w-64"> {/* Set fixed width */}
-      <Card {...args}
+      <Card  {...args}
+      modalVisibility={"flex"}
       setVisibility={setVisibility}
       setSelectedClient={setSelectedClient}
       setActiveCardId={setActiveCardId} />
