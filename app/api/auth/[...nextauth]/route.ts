@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
@@ -29,13 +30,16 @@ const authOptions = {
             password: credentials.password
           }
         });
-        // const user = await prisma.admin.findMany();
-        console.log(user?.password);
+        
         if(!user){
           // throw new Error("Invalid username or password");
           return null;
         }
-
+        // Bcrypt test
+        const hashed = await bcrypt.hash(user?.password, 10);
+        const verify = await bcrypt.compare('om',hashed);
+        console.log("Password: ",user?.password,' hash: ',hashed, ' status: ',verify);
+        // Bcrypt test end
         return {
           id: "user",
           name: credentials?.username,
