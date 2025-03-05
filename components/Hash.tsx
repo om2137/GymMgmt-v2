@@ -78,16 +78,16 @@ export const ChecksumGenerator = () => {
       // Step 1: Generate Key
       const keyString = `${username}~:~${password}`;
       const key = crypto.createHash("sha256").update(keyString).digest("hex");
-  
+      console.log(key)
       // Step 2: Generate alldata string
       const alldata = [
         merchantId,
         merchantTxnId,
-        date,
+        '2025-02-25',
       ]
         .filter(Boolean) // Remove empty values
-        .join(".");
-  
+        .join("");
+      console.log(alldata)
       // Step 3: Generate Checksum
       const checksum = crypto.createHash("sha256").update(`${key}@${alldata}`).digest("hex");
   
