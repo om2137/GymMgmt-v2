@@ -1,5 +1,6 @@
 import { Footer } from "@/components/commons/Footer";
 import { Header as Navbar } from "@/components/commons/header";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function Layout({ children }: { children: React.ReactNode }){
   return(
@@ -9,7 +10,8 @@ export default function Layout({ children }: { children: React.ReactNode }){
       </div>
     
       <div className="flex-1 pt-24 ">
-        {children}  
+        {children} 
+        <Toaster position="top-right" richColors  /> 
       </div>
       <div>
         <Footer />
