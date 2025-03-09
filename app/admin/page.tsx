@@ -1,7 +1,9 @@
 // import InitChart from "@/components/Charts/InitChart";
 'use client'
+import { Button } from "@/components/Buttons/Button";
 import { LineChartComp, PieChartComp } from "@/components/Charts/InitChart";
 import { useSession } from "next-auth/react";
+import { toast } from "sonner";
 
 export default function Dashboard() {
     const clients = [
@@ -24,7 +26,14 @@ export default function Dashboard() {
             <div className="h-full m-2 p-2 sm:p-4 sm:m-4 flex flex-col capitalize text-2xl justify-start items-start">
                 <div className="px-4 pb-4 text-4xl capitalize font-semibold">
                     <span className="font-light">Good afternoon, </span>
-                    {user.data?.user?.name}
+                    {user.data?.user?.name} <Button Name={"sonner"} properties="text-lg" onClick={() => 
+                            {
+                                console.log("sonner");
+                                toast.success('Event has been created', {
+                                    description: 'Monday, January 3rd at 6:00pm',
+                                  })
+                            }
+                        } />
                 </div>
                 {/* <div>
                     <InitChart />
