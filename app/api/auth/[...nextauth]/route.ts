@@ -36,11 +36,14 @@ const authOptions = {
           alert("wrong info")
           return null;
         }
+
+        const { username, password } = parsedCredentials.data;
+
         console.log(credentials.username);
         const user = await prisma.admin.findFirst({
           where:{
-            AdminName: credentials.username,
-            password: credentials.password
+            AdminName: username,
+            password: password
           }
         });
         
