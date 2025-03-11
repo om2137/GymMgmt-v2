@@ -2,6 +2,12 @@ import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from 'bcrypt';
+import { z } from 'zod';
+
+const credentialsSchema = z.object({
+  username: z.string().min(1, "Username is required").max(50),
+  password: z.string().min(6, "Password must be at least 6 characters long"),
+});
 
 const prisma = new PrismaClient();
 
@@ -19,6 +25,13 @@ const authOptions = {
       },
       async authorize(credentials) {
         console.log("checking data")
+
+        const parsedCredentials = credentialsSchema.safeParse(credentials);
+        if (!parsedCredentials.success) {
+          console.error(parsedCredentials.error.format());
+          throw new Error("Invalid username or password");
+        }
+
         if (!credentials?.username || !credentials.password) {
           alert("wrong info")
           return null;
