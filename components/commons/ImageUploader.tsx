@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Image from 'next/image';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 type UploadStatus = 'idle' | 'uploading' | 'success' | 'error';
 
@@ -13,7 +14,7 @@ export const ImageUploader = () => {
         console.log(file);
         if (file) {
             setStatus('uploading'); 
-
+            toast.warning('Image upload started');
             try {
                 // Simulate upload delay
                 // await new Promise((resolve) => setTimeout(resolve, 4000)); 
@@ -26,9 +27,11 @@ export const ImageUploader = () => {
                 const response = await axios.post('https://api.cloudinary.com/v1_1/dqpsoptzm/image/upload', formData);
                 console.log(response);
                 setImage(response.data.secure_url);
+                toast.success('Image uploaded successfully');
                 setStatus('success');
             } catch (error) {
                 console.error('Upload failed:', error);
+                toast.error('Image upload failed');
                 setStatus('error'); 
             }
         } else {
