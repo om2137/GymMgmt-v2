@@ -4,6 +4,7 @@ import { Dropdown } from "./InputComp/DropDown"
 import { Input } from "./InputComp/Input"
 import { ImageUploader } from "./commons/ImageUploader";
 import axios from "axios";
+import { toast } from "sonner";
 
 interface user {
     cardNo: string;
@@ -61,10 +62,13 @@ export function AdmissionForm() {
     async function InsertUser() {
         try {
             const response = await axios.post("http://localhost:3000/api/clients", user)
+            toast.success('User has been created')
             console.log(response)
+            
             alert(response.data.cardNo);
             return response.data;
         } catch (e) {
+            toast.error('User creation failed')
             console.log(e);
         }
     }
