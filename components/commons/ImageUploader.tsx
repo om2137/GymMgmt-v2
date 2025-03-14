@@ -27,6 +27,7 @@ export const ImageUploader = () => {
                 const response = await axios.post('https://api.cloudinary.com/v1_1/dqpsoptzm/image/upload', formData);
                 console.log(response);
                 setImage(response.data.secure_url);
+                toast.success('Image uploaded successfully');
                 setStatus('success');
             } catch (error) {
                 console.error('Upload failed:', error);
