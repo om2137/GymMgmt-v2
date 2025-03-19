@@ -5,6 +5,7 @@ import { Button } from "./Buttons/Button";
 import { SearchBar } from "./commons/SearchBar";
 import { Dropdown } from "./InputComp/DropDown";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 
 interface props {
     client: client[];
@@ -78,9 +79,9 @@ export function MakeInvoice(Props: props) {
 
     async function insertInvoice() {
         const response = await axios.post(`http://localhost:3000/api/invoices`, newInvoice);
-        alert(response);
+        // alert(response);
         console.log(response);
-
+        toast.success('Invoice has been created')
         // console.log(newInvoice)
     }
     function handlePaidDate(e: { target: { value: string | number | Date; }; }) {
