@@ -25,8 +25,7 @@ export default function Card({ client, modalVisibility, setVisibility, setSelect
         if(modalVisibility === 'hidden'){
             setActiveCardId(null);
         }
-        
-        console.log(id);
+        // console.log(id);
     };
     
     return (
